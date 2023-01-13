@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cocktails</title>
+    <title>Favorite cocktails</title>
     <link
       rel="stylesheet"
       href="../node_modules/modern-normalize/modern-normalize.css"
@@ -14,20 +14,18 @@
     />
     <link rel="stylesheet" href="./sass/index.scss" />
   </head>
+
   <body>
     <header class="header">
       <include src="./partials/header.html"></include>
     </header>
+
     <main>
-      <include src="./partials/hero.html"></include>
-      <include src="./partials/cocktails.html"></include>
+      <include src="./partials/favorite-cocktail.html"></include>
     </main>
 
     <footer class="footer"></footer>
 
-    <include src="./partials/modal.html"></include>
-    <include src="./partials/modal-ingredient.html"></include>
-
-    <script type="module" src="index.js"></script>
+    <script type="module" src="favCocktail.js"></script>
   </body>
 </html>

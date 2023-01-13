@@ -1,0 +1,102 @@
+.tui-pagination {
+  display: flex;
+  gap: 8px;
+  margin: 45px auto 40px;
+  height: 32px;
+
+  @media screen and (min-width: $tablet) {
+    margin: 32px auto 60px;
+    gap: 12px;
+    height: 40px;
+  }
+}
+
+.tui-pagination .tui-page-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 32px;
+  height: 32px;
+
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: calc(15 / 12);
+
+  border: 1px solid $btnBgColor;
+  color: #1e1e1e;
+  border-radius: 50%;
+
+  @media screen and (min-width: $tablet) {
+    width: 40px;
+    height: 40px;
+
+    font-size: 16px;
+    line-height: calc(20 / 16);
+  }
+}
+
+.tui-pagination .tui-is-selected,
+.tui-pagination strong {
+  font-style: normal;
+  color: $extraDecorColor;
+  background: $btnBgColor;
+}
+
+.tui-pagination .tui-prev,
+.tui-pagination .tui-next {
+  margin: 0;
+}
+
+.tui-pagination .tui-first,
+.tui-pagination .tui-next,
+.tui-pagination .tui-last,
+.tui-pagination .tui-prev,
+.tui-pagination .tui-next-is-ellip,
+.tui-pagination .tui-prev-is-ellip {
+  border: none;
+}
+
+.tui-pagination .tui-first-child.tui-is-selected,
+.tui-pagination .tui-last-child.tui-is-selected {
+  border: 1px solid $btnBgColor;
+}
+
+.tui-pagination .tui-is-selected:hover {
+  background-color: $btnBgColor;
+}
+
+.tui-pagination .tui-first,
+.tui-pagination .tui-last {
+  @media screen and (max-width: $to-tablet) {
+    display: none;
+  }
+}
+
+.tui-pagination .tui-ico-ellip {
+  background-image: none;
+  margin: 0;
+}
+
+.tui-pagination .tui-next-is-ellip::after,
+.tui-pagination .tui-prev-is-ellip::after {
+  content: '...';
+  position: absolute;
+  top: 25%;
+  left: 25%;
+
+  display: block;
+
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 5px;
+  color: #fe7031;
+  @media screen and (min-width: $tablet) {
+    letter-spacing: 2px;
+  }
+}

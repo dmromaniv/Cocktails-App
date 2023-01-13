@@ -1,0 +1,251 @@
+.cocktails {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.cocktails__title {
+  margin-bottom: 60px;
+
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 1.91;
+
+  color: inherit;
+
+  @media screen and (min-width: $tablet) and (max-width: $to-desktop) {
+    margin-bottom: 56px;
+    font-size: 32px;
+    line-height: 1.31;
+  }
+  @media screen and (min-width: $desktop) {
+    font-size: 48px;
+    line-height: 1.5;
+  }
+}
+
+.cocktails__list {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  // align-items: center;
+  gap: 20px;
+
+  @media screen and (min-width: $tablet) {
+    flex-direction: row;
+    gap: 25px;
+  }
+}
+
+.cocktails__list-item {
+  border: 1px solid $accentColor;
+  border-radius: 4px;
+  @media screen and (min-width: $tablet) {
+    flex-basis: calc((100% - 32px) / 2);
+  }
+  @media screen and (min-width: $desktop) {
+    flex-basis: calc((100% - 64px) / 3);
+  }
+}
+
+.cocktail-card {
+  // display: flex;
+  // flex-direction: column;
+  // align-items: center;
+  // justify-content: center;
+  padding-bottom: 24px;
+  width: 100%;
+  text-align: center;
+
+  @media screen and (min-width: 280px) and (max-width: $to-mobile) {
+    width: 280px;
+  }
+
+  @media screen and (max-width: $tablet) {
+    padding-bottom: 20px;
+  }
+  @media screen and (max-width: $desktop) {
+    padding-bottom: 28px;
+  }
+}
+
+.cocktail-card__img-wrapper {
+  width: 280px;
+  height: 280px;
+  margin-bottom: 48px;
+
+  @media screen and (min-width: $tablet) {
+    width: 335px;
+    height: 395px;
+
+    margin-bottom: 20px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    width: 395px;
+    height: 395px;
+  }
+}
+
+.cocktail-card__img {
+  width: 100%;
+  height: 100%;
+}
+
+.cocktail-card__name {
+  margin-bottom: 16px;
+
+  font-family: 'Roboto';
+  font-weight: 900;
+  font-size: 26px;
+  line-height: 1.62;
+
+  color: inherit;
+
+  @media screen and (min-width: $tablet) {
+    margin-bottom: 25px;
+    font-size: 28px;
+    line-height: 1.18;
+  }
+  @media screen and (min-width: $desktop) {
+    font-size: 32px;
+  }
+}
+
+.cocktail-card__btns-block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+
+  width: 100%;
+
+  @media screen and (min-width: $tablet) {
+    gap: 12px;
+  }
+  @media screen and (min-width: $desktop) {
+    gap: 16px;
+  }
+}
+
+.cocktail-card__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 108px;
+  height: 39px;
+
+  font-family: 'Roboto';
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.71;
+
+  letter-spacing: 0.02em;
+
+  border-radius: 4px;
+
+  &--accent {
+    background-color: $btnBgColor;
+    color: #ffffff;
+
+    @media screen and (min-width: $tablet) {
+      min-width: 160px;
+    }
+    @media screen and (min-width: $desktop) {
+      min-width: 182px;
+    }
+  }
+
+  &--transp {
+    background-color: transparent;
+    border: 1px solid $accentBtnColor;
+
+    @media screen and (min-width: $tablet) {
+      min-width: 124px;
+    }
+    @media screen and (min-width: $desktop) {
+      min-width: 141px;
+    }
+  }
+
+  &--centered {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+
+    @media screen and (min-width: $tablet) {
+      gap: 6px;
+    }
+  }
+
+  @media screen and (min-width: $tablet) {
+    height: 48px;
+
+    font-size: 20px;
+    line-height: 1.2;
+  }
+}
+
+.cocktail-card__heart-icon {
+  fill: inherit;
+}
+
+// .pagination {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   gap: 12px;
+
+//   margin-top: 32px;
+//   margin-bottom: 60px;
+// }
+
+// // .pagination__btn-wrapper {
+// //   display: flex;
+// //   justify-content: center;
+// //   align-items: center;
+// //   width: 40px;
+// //   height: 40px;
+// // }
+
+// .pagination__button {
+//   width: 32px;
+//   height: 32px;
+//   background: inherit;
+//   border: 1px solid #fe7031;
+//   border-radius: 50%;
+//   font-family: 'Montserrat';
+//   font-style: normal;
+//   font-weight: 400;
+//   font-size: 12px;
+//   line-height: 15px;
+//   color: inherit;
+//   &:not(:last-child) {
+//     margin-right: 8px;
+//   }
+//   @media screen and (min-width: $tablet) {
+//     width: 40px;
+//     height: 40px;
+//     font-size: 16px;
+//     line-height: 20px;
+//     &:not(:last-child) {
+//       margin-right: 12px;
+//     }
+//   }
+// }
+
+// .pagination__decor {
+//   font-weight: 700;
+//   line-height: calc(20 / 16);
+//   color: $btnBgColor;
+// }
+// .pagination__button--active {
+//   background-color: $btnBgColor;
+//   color: $extraDecorColor;
+// }
+
+// .tui-page-btn {
+//   border-radius: 50%;
+// }

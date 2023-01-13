@@ -1,0 +1,122 @@
+.modal-ingredient {
+  position: absolute;
+
+  top: 25%;
+  left: 50%;
+  transform: translateX(-50%);
+  // transform: translateY(-50%);
+
+  // display: none;
+
+  margin: 0 auto;
+  padding: 40px 20px;
+  width: 100%;
+
+  font-size: 16px;
+
+  background-color: #fcfcfc;
+
+  @media screen and (min-width: $mobile) {
+    width: 320px;
+  }
+
+  @media screen and (min-width: $tablet) {
+    padding: 40px 28px 28px;
+    width: 715px;
+  }
+}
+
+.is-active {
+  display: block;
+}
+
+.close-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 32px;
+  height: 32px;
+  outline: none;
+
+  @media screen and (min-width: $tablet) {
+    top: 12px;
+    right: 12px;
+  }
+}
+
+.ingredient__main-content {
+  // margin-bottom: 32px;
+  margin-bottom: 20px;
+
+  @media screen and (min-width: $tablet) {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid $accentColor;
+    padding-bottom: 40px;
+    margin-bottom: 28px;
+  }
+}
+
+.ingredient__title {
+  margin-bottom: 20px;
+
+  font-family: 'Roboto';
+  font-weight: 900;
+  font-size: 32px;
+  line-height: calc(38 / 32);
+  color: inherit;
+
+  @media screen and (min-width: $tablet) {
+    margin-bottom: 28px;
+  }
+}
+
+.ingredient__type {
+  font-weight: 600;
+  line-height: calc(26 / 16);
+  color: inherit;
+  text-transform: uppercase;
+}
+
+.ingredient__desc {
+  line-height: calc(28 / 16);
+  margin-bottom: 28px;
+  color: $textClGrayForLight;
+}
+
+.ingredient__desc-accent {
+  font-weight: 600;
+  color: $textColorDark;
+}
+
+.ingredient__info {
+  padding-left: 10px;
+  margin-bottom: 32px;
+  line-height: calc(26 / 16);
+  @media screen and (min-width: $tablet) {
+    margin-bottom: 40px;
+  }
+}
+
+.cocktail__button {
+  display: block;
+  padding: 12px 24px;
+
+  font-family: 'Roboto';
+  font-size: 20px;
+  line-height: 24px;
+
+  color: $extraDecorColor;
+  background-color: $btnAccentBgColor;
+  border-radius: 4px;
+
+  @media screen and (min-width: $tablet) {
+    margin-left: auto;
+  }
+}
+
+.ingredient__info > li::marker {
+  content: '✶';
+  color: $textColorDark;
+}

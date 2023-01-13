@@ -1,0 +1,136 @@
+.menu-active {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 320px;
+  height: 100vh;
+  // margin-left: auto;
+  // margin-right: auto;
+  transition: 250ms;
+  background-color: inherit;
+  fill: inherit;
+  color: inherit;
+
+  @media screen and (min-width: 768px) {
+    width: 768px;
+  }
+}
+
+.menu-active::after {
+  @media screen and (min-width: 768px) {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 110px;
+    background-color: #fd5103;
+  }
+}
+
+.menu-active .container-header {
+  font-family: 'Poppins';
+  flex-wrap: wrap;
+  row-gap: 40px;
+
+  @media screen and (min-width: 768px) {
+    row-gap: 63px;
+    padding-top: 32px;
+  }
+}
+
+.menu-active .logo {
+  display: none;
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+    order: 1;
+    margin-right: 150px;
+  }
+}
+
+.menu-active .header__nav {
+  display: flex;
+  order: 4;
+
+  @media screen and (min-width: 768px) {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.menu-active .header__nav-item {
+  font-size: 28px;
+  line-height: 0.86;
+  margin-bottom: 32px;
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 40px;
+  }
+}
+
+.menu-active .header__nav-link {
+  display: flex;
+  align-items: center;
+}
+
+.menu-active .header__favorite-icon {
+  display: flex;
+  fill: #000000;
+  margin-top: 4px;
+  margin-left: 8px;
+}
+
+.menu-active .header__box-favorite {
+  font-size: 24px;
+  line-height: 0.86;
+  top: 48px;
+  width: 280px;
+  height: auto;
+}
+
+.menu-active .header__favorite-link {
+  padding: 16px 12px;
+}
+
+.menu-active .header__form {
+  display: flex;
+  order: 3;
+
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
+}
+
+.menu-active .header__search {
+  width: 240px;
+}
+
+.menu-active .burger-btn {
+  order: 2;
+
+  @media screen and (min-width: 768px) {
+    // position: relative;
+    order: 3;
+    top: 40px;
+    right: 16px;
+  }
+}
+
+.menu-active .header__toggle-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  order: 1;
+
+  @media screen and (min-width: 768px) {
+    order: 2;
+    margin-right: 246px;
+    margin-bottom: 6px;
+  }
+}
+
+.menu-active .header__toggle-dark {
+  color: #202025;
+}

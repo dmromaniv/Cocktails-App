@@ -1,0 +1,40 @@
+<section class="hero">
+  <div class="container hero__container">
+    <h1 class="hero__title">A party without cocktails is not like a party</h1>
+    <img
+      class="hero__img"
+      srcset="
+        ./images/hero/hero-img-m1x.png  280w,
+        ./images/hero/hero-img-m2x.png  560w,
+        ./images/hero/hero-img-t1x.png  336w,
+        ./images/hero/hero-img-t2x.png  672w,
+        ./images/hero/hero-img-d1x.png  501w,
+        ./images/hero/hero-img-d2x.png 1002w
+      "
+      sizes="(min-width: 1280px) 501px, (min-width: 768px) 336px, (min-width: 480px) 280px, 100vw"
+      src="./images/hero/hero-img-m1x.png"
+      alt="delicious-sangria-cocktail-held-in-hand-mobile"
+    />
+
+    <!-- <div class="hero__search"> -->
+    <p class="hero__text">Search your favorite cocktail by ABC</p>
+    <ul class="hero__alphabet-list" id="letter-widescreen"></ul>
+
+    <form class="hero__form" action="">
+      <!-- <select class="hero__letter" id="letter" name="letter"></select> -->
+      <div class="hero__select">
+        <button class="hero__select-choose" type="button">
+          <span class="hero__select-text">A</span>
+          <svg class="hero__select-icon" width="24" height="24">
+            <use href="./images/hero/symbol-defs.svg#icon-shevron-down"></use>
+          </svg>
+        </button>
+
+        <div class="hero__select-box js-select-options is-hidden">
+          <ul class="hero__select-list"></ul>
+        </div>
+      </div>
+    </form>
+    <!-- </div> -->
+  </div>
+</section>

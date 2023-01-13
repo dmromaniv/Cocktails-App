@@ -1,0 +1,59 @@
+<!-- <header class="header"> -->
+<div class="container container-header">
+  <a class="logo" href="./index.html"
+    >Cocktails
+    <img class="logo__img" src="./images/logo-icon.png" alt="logo" />
+  </a>
+  <nav class="header__nav">
+    <ul class="header__nav-list">
+      <li class="header__nav-item">
+        <a class="header__nav-link" href="./index.html">Home</a>
+      </li>
+      <li class="header__nav-item">
+        <a class="header__nav-link" href="#">
+          Favorite
+          <svg class="header__favorite-icon" width="24" height="24">
+            <use
+              href="./images/hero/symbol-defs.svg#icon-shevron-down-big"
+            ></use>
+          </svg>
+        </a>
+        <div class="header__box-favorite">
+          <a class="header__favorite-link" href="./favCocktail.html"
+            >Favorite cocktails</a
+          >
+          <!-- <a class="header__favorite-link" href="./ingredient.html"
+            >Favorite&nbspingredients</a
+          > -->
+        </div>
+      </li>
+    </ul>
+  </nav>
+  <form class="header__form" action="">
+    <button class="searchButton" type="submit">
+      <svg class="searchButton__icon" width="24" height="24">
+        <use href="./images/hero/symbol-defs.svg#icon-search"></use>
+      </svg>
+    </button>
+    <input
+      class="header__search"
+      name="search"
+      type="text"
+      placeholder="Search"
+    />
+  </form>
+  <button class="burger-btn button">
+    <svg width="30" height="16" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="30" height="2" rx="1" fill="inherit" />
+      <rect y="7" width="30" height="2" rx="1" fill="#inherit" />
+      <rect y="14" width="30" height="2" rx="1" fill="#inherit" />
+    </svg>
+  </button>
+  <div class="header__toggle-box">
+    <input id="switch" type="checkbox" />
+    <p class="header__toggle-light">Light</p>
+    <label class="header__toggle" for="switch"></label>
+    <p class="header__toggle-dark">Dark</p>
+  </div>
+</div>
+<!-- </header> -->
