@@ -12,7 +12,7 @@ let currentPage = 1;
 let cardsPerPage = calcCardsPerPage();
 
 // Generate cocktails list
-export function renderGallery(cocktailsData, elementRef) {
+export function renderGallery(cocktailsData, elementRef, createCardMarkup) {
   let cocktailsListMarkup = '';
   cocktailsData
     .filter((_, index) => {
@@ -22,12 +22,12 @@ export function renderGallery(cocktailsData, elementRef) {
       if (index >= start && index < end) return true;
     })
     .forEach(cocktail => {
-      cocktailsListMarkup += createCocktailCardMarkup(cocktail);
+      cocktailsListMarkup += createCardMarkup(cocktail);
     });
   elementRef.innerHTML = cocktailsListMarkup;
 }
 
-function calcCardsPerPage() {
+export function calcCardsPerPage() {
   const width = window.innerWidth;
 
   if (width > 768 && width < 1199) {
@@ -39,23 +39,25 @@ function calcCardsPerPage() {
   }
 }
 
-export function createPagination(drinksData, elementRef) {
+export function createPagination(drinksData, elementRef, cardMarkup) {
   currentPage = 1;
-  console.log('Page: ', currentPage);
+  elementsRef.paginationEl.innerHTML = '';
+  console.log(cardsPerPage, drinksData.length);
+  if (cardsPerPage < drinksData.length) {
+    console.log('Page: ', currentPage);
+    const options = {
+      totalItems: drinksData.length,
+      itemsPerPage: cardsPerPage,
+      visiblePages: 3,
+      page: 1,
+      centerAlign: false,
+    };
+    const pagination = new Pagination(elementsRef.paginationEl, options);
 
-  const options = {
-    totalItems: drinksData.length,
-    itemsPerPage: cardsPerPage,
-    visiblePages: 3,
-    page: 1,
-    centerAlign: false,
-    // firstItemClassName: 'tui-first-child',
-    // lastItemClassName: 'tui-last-child',
-  };
-  const pagination = new Pagination(elementsRef.paginationEl, options);
-
-  pagination.on('afterMove', event => {
-    currentPage = event.page;
-    renderGallery(drinksData, elementRef);
-  });
+    pagination.on('afterMove', event => {
+      currentPage = event.page;
+      console.log('Current: ', currentPage);
+      renderGallery(drinksData, elementRef, cardMarkup);
+    });
+  }
 }

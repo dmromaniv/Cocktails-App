@@ -1,15 +1,9 @@
 .modal {
   position: absolute;
-  // top: 0;
-  // bottom: 0;
-  // left: 0;
-  // right: 0;
   top: 50%;
   left: 50%;
-  // transform: translateX(-50%);
-  // transform: translateY(-50%);
+
   transform: translate(-50%, -50%);
-  // display: none;
 
   margin: 0 auto;
   padding: 40px 20px;
@@ -19,19 +13,24 @@
   color: inherit;
   background-color: #fcfcfc;
 
+  @media screen and (min-width: $mobile) and (max-width: $to-desktop) {
+    height: 70vh;
+    overflow: auto;
+  }
+
   @media screen and (min-width: $mobile) {
     width: 320px;
   }
 
   @media screen and (min-width: $tablet) {
     padding: 40px 28px 28px;
+    width: 90vw;
+  }
+  @media screen and (min-width: $desktop) {
+    padding: 40px 28px 28px;
     width: 822px;
   }
 }
-
-// .is-active {
-//   display: block;
-// }
 
 .close-btn {
   position: absolute;
@@ -99,6 +98,7 @@
 }
 
 .cocktail__desc {
+  overflow: auto;
   line-height: calc(28 / 16);
   color: #bdbdbd;
 }
@@ -162,6 +162,8 @@
 }
 
 .cocktail__ingredients {
+  height: 130px;
+  overflow: auto;
   padding-left: 10px;
   line-height: calc(26 / 16);
 }

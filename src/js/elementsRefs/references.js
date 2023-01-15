@@ -4,9 +4,10 @@ export const elementsRef = {
   selectOptions: document.querySelector('.js-select-options'),
   selectWidescreenEl: document.querySelector('#letter-widescreen'),
   cocktailsListEl: document.getElementById('listing-table'),
+  ingredientsListEl: document.querySelector('.favorite__list-ingredient'),
   alphabetListEl: document.querySelector('.hero__alphabet-list'),
   paginationEl: document.getElementById('tui-pagination-container'),
-  cocktailsListEl: document.querySelector('.cocktails__list'),
   searchFormRef: document.querySelector('.header__form'),
   notFoundTextEl: document.querySelector('.header__form'),
+  notFoundMsgOnFavPageEl: document.querySelector('.favorite__notfound-msg'),
 };

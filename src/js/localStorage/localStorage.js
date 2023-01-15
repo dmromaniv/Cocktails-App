@@ -40,7 +40,6 @@ export function updateLocalStorage(cardId, key) {
       addToLocalStorage(key, cardsId);
     } else {
       cardsId.push(cardId);
-      console.log(cardsId);
       addToLocalStorage(key, cardsId);
     }
   }
