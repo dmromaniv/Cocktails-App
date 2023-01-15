@@ -79,17 +79,17 @@
   text-transform: uppercase;
 }
 
+.ingredient__name-accent {
+  font-weight: 600;
+  color: $textColorDark;
+}
+
 .ingredient__desc {
   height: 112px;
   overflow: auto;
   line-height: calc(28 / 16);
   margin-bottom: 28px;
   color: $textClGrayForLight;
-}
-
-.ingredient__desc-accent {
-  font-weight: 600;
-  color: $textColorDark;
 }
 
 .ingredient__info {

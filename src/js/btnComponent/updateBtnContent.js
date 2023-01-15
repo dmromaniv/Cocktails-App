@@ -2,10 +2,7 @@ import {
   createBtnMarkup,
   createModalBtnMarkup,
 } from '../elementsMarkup/favBtnMarkup';
-import {
-  checkElInLocalStorage,
-  updateLocalStorage,
-} from '../localStorage/localStorage';
+import { checkElInLocalStorage } from '../localStorage/localStorage';
 
 export function updateFavBtnContent(cardId, localStorageKey) {
   const elemExists = checkElInLocalStorage(cardId, localStorageKey);

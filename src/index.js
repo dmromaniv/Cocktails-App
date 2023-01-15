@@ -1,5 +1,4 @@
 import './js/modals/mobileMenu';
-import './js/changeColorTheme';
 import Notiflix from 'notiflix';
 import { elementsRef } from './js/elementsRefs/references';
 import { renderAlphabet } from './js/elementsRender/renderAlphabet';
@@ -17,16 +16,12 @@ import { updateFavBtnContent } from './js/btnComponent/updateBtnContent';
 import { constants } from './js/constantsStorage/constants';
 import { updateLocalStorage } from './js/localStorage/localStorage';
 import { createModal } from './js/modals/createModal';
-import {
-  createCocktailModalMarkup,
-  createIngredientsListMarkup,
-} from './js/modals/cocktailModalMarkup';
+import { createCocktailModalMarkup } from './js/modals/cocktailModalMarkup';
 import { createCocktailCardMarkup } from './js/elementsMarkup/cocktailCard';
 import { calcCardsPerPage } from './js/elementsRender/renderGallery';
-import { showNotFoundMsg } from './js/utils/utils';
+import { showMsgNotFound } from './js/utils/utils';
 
 elementsRef.alphabetListEl.addEventListener('click', alphabetSearchHandler);
-
 elementsRef.cocktailsListEl.addEventListener('click', cocktailCardHandler);
 elementsRef.searchFormRef.addEventListener('submit', searchFormHandler);
 
@@ -37,7 +32,10 @@ generateRandomCocktails();
 function initAlphabetSearch() {
   renderAlphabet();
   elementsRef.selectValue.addEventListener('click', onToggleSelectOptions);
-  elementsRef.selectMobileEl.addEventListener('click', onOptionClick);
+  elementsRef.selectMobileEl.addEventListener(
+    'click',
+    alphabetSearchMobileHandler
+  );
 }
 
 // Generate random cocktails list after page loading
@@ -61,23 +59,126 @@ async function generateRandomCocktails() {
 // Generate filtered cocktails by letter
 async function alphabetSearchHandler(e) {
   if (e.target.nodeName !== 'BUTTON') return;
-  try {
-    const filteredCocktailByLetter = await getCocktailsByLetter(e.target.value);
 
-    showNotFoundMsg(
-      filteredCocktailByLetter,
+  await searchCocktails(e.target.value, getCocktailsByLetter);
+
+  // try {
+  //   const filteredCocktailByLetter = await getCocktailsByLetter(e.target.value);
+
+  //   showNotFoundMsg(
+  //     filteredCocktailByLetter,
+  //     elementsRef.cocktailsListEl,
+  //     elementsRef.paginationEl
+  //   );
+
+  //   if (filteredCocktailByLetter) {
+  //     renderGallery(
+  //       filteredCocktailByLetter,
+  //       elementsRef.cocktailsListEl,
+  //       createCocktailCardMarkup
+  //     );
+  //     createPagination(
+  //       filteredCocktailByLetter,
+  //       elementsRef.cocktailsListEl,
+  //       createCocktailCardMarkup
+  //     );
+  //   }
+  // } catch (error) {
+  //   console.log(error);
+  // }
+}
+
+async function alphabetSearchMobileHandler(e) {
+  elementsRef.selectValue.firstElementChild.textContent = e.target.textContent;
+  onToggleSelectOptions();
+  activeFill();
+
+  await searchCocktails(e.target.dataset.value, getCocktailsByLetter);
+  // try {
+  //   const filteredCocktailByLetter = await getCocktailsByLetter(
+  //     e.target.dataset.value
+  //   );
+
+  //   showNotFoundMsg(
+  //     filteredCocktailByLetter,
+  //     elementsRef.cocktailsListEl,
+  //     elementsRef.paginationEl
+  //   );
+
+  //   if (filteredCocktailByLetter) {
+  //     renderGallery(
+  //       filteredCocktailByLetter,
+  //       elementsRef.cocktailsListEl,
+  //       createCocktailCardMarkup
+  //     );
+  //     createPagination(
+  //       filteredCocktailByLetter,
+  //       elementsRef.cocktailsListEl,
+  //       createCocktailCardMarkup
+  //     );
+  //   }
+  // } catch (error) {
+  //   console.log(error);
+  // }
+}
+
+// Handle search query
+async function searchFormHandler(e) {
+  e.preventDefault();
+  const searchQuery = e.target.elements.search.value.trim();
+  if (!searchQuery) {
+    Notiflix.Notify.warning('Please, enter the correct search query');
+  } else {
+    await searchCocktails(searchQuery, getCocktailByName);
+    document.querySelector('.header').classList.remove('menu-active');
+    // try {
+    //   const filteredCocktailsByName = await getCocktailByName(searchQuery);
+
+    //   showNotFoundMsg(
+    //     filteredCocktailsByName,
+    //     elementsRef.cocktailsListEl,
+    //     elementsRef.paginationEl
+    //   );
+
+    //   if (filteredCocktailsByName) {
+    //     renderGallery(
+    //       filteredCocktailsByName,
+    //       elementsRef.cocktailsListEl,
+    //       createCocktailCardMarkup
+    //     );
+    //     createPagination(
+    //       filteredCocktailsByName,
+    //       elementsRef.cocktailsListEl,
+    //       createCocktailCardMarkup
+    //     );
+    //   }
+    // } catch (error) {
+    //   console.log(error);
+    // }
+  }
+}
+
+// General function to get cocktail info and render gallery
+async function searchCocktails(searchQuery, getCocktail) {
+  try {
+    const foundCocktail = await getCocktail(searchQuery);
+
+    // Print a message when no cocktail is found
+    showMsgNotFound(
+      foundCocktail,
       elementsRef.cocktailsListEl,
       elementsRef.paginationEl
     );
 
-    if (filteredCocktailByLetter) {
+    // Render cocktails gallery when the request is successful
+    if (foundCocktail) {
       renderGallery(
-        filteredCocktailByLetter,
+        foundCocktail,
         elementsRef.cocktailsListEl,
         createCocktailCardMarkup
       );
       createPagination(
-        filteredCocktailByLetter,
+        foundCocktail,
         elementsRef.cocktailsListEl,
         createCocktailCardMarkup
       );
@@ -89,29 +190,28 @@ async function alphabetSearchHandler(e) {
 
 // Handle button clicks in the card
 async function cocktailCardHandler(e) {
-  if (e.target.nodeName !== 'BUTTON') return;
+  if (!e.target.closest('BUTTON')) {
+    return;
+  }
 
   const cocktailCardEl = e.target.closest('[data-id]');
   const cocktailId = cocktailCardEl.dataset.id;
 
-  if (e.target.classList.contains('js-btn-fav')) {
+  const btnEl = e.target.closest('.js-btn-fav');
+  if (btnEl) {
     updateLocalStorage(cocktailId, constants.favCocktailStorageKey);
 
-    e.target.innerHTML = updateFavBtnContent(
+    btnEl.innerHTML = updateFavBtnContent(
       cocktailId,
       constants.favCocktailStorageKey
     );
   }
   if (e.target.classList.contains('js-btn-more')) {
     const cocktailInfo = await getCocktailsById(cocktailId);
-    // console.log(cocktailInfo);
 
     // const ingredientModalContent = createIngredientsListMarkup(cocktailInfo[0]);
 
-    const cocktailModalContent = createCocktailModalMarkup(
-      cocktailInfo[0]
-      // ingredientModalContent
-    );
+    const cocktailModalContent = createCocktailModalMarkup(cocktailInfo[0]);
 
     createModal(
       cocktailModalContent,
@@ -121,77 +221,9 @@ async function cocktailCardHandler(e) {
   }
 }
 
-// Handle search query
-async function searchFormHandler(e) {
-  e.preventDefault();
-  const searchQuery = e.target.elements.search.value.trim();
-  if (!searchQuery) {
-    Notiflix.Notify.warning('Please, enter the correct search query');
-  } else {
-    try {
-      const filteredCocktailsByName = await getCocktailByName(searchQuery);
-
-      showNotFoundMsg(
-        filteredCocktailsByName,
-        elementsRef.cocktailsListEl,
-        elementsRef.paginationEl
-      );
-
-      if (filteredCocktailsByName) {
-        renderGallery(
-          filteredCocktailsByName,
-          elementsRef.cocktailsListEl,
-          createCocktailCardMarkup
-        );
-        createPagination(
-          filteredCocktailsByName,
-          elementsRef.cocktailsListEl,
-          createCocktailCardMarkup
-        );
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  }
-}
-
-// Utils
+//====Utils for alphabet search====
 function onToggleSelectOptions() {
   elementsRef.selectOptions.classList.toggle('is-hidden');
-}
-
-async function onOptionClick(e) {
-  elementsRef.selectValue.firstElementChild.textContent = e.target.textContent;
-  onToggleSelectOptions();
-  activeFill();
-
-  console.log(e.target.dataset.value);
-  try {
-    const filteredCocktailByLetter = await getCocktailsByLetter(
-      e.target.dataset.value
-    );
-
-    showNotFoundMsg(
-      filteredCocktailByLetter,
-      elementsRef.cocktailsListEl,
-      elementsRef.paginationEl
-    );
-
-    if (filteredCocktailByLetter) {
-      renderGallery(
-        filteredCocktailByLetter,
-        elementsRef.cocktailsListEl,
-        createCocktailCardMarkup
-      );
-      createPagination(
-        filteredCocktailByLetter,
-        elementsRef.cocktailsListEl,
-        createCocktailCardMarkup
-      );
-    }
-  } catch (error) {
-    console.log(error);
-  }
 }
 
 function activeFill() {

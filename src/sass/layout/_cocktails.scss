@@ -5,21 +5,22 @@
 }
 
 .main-heading {
-  margin-bottom: 60px;
-
   font-weight: 600;
   font-size: 22px;
   line-height: 1.91;
-   text-align: center;
+  margin: 0 auto 60px;
 
   color: inherit;
 
   @media screen and (min-width: $tablet) and (max-width: $to-desktop) {
     margin-bottom: 56px;
+    width: 330px;
     font-size: 32px;
     line-height: 1.31;
   }
   @media screen and (min-width: $desktop) {
+    width: 495px;
+
     font-size: 48px;
     line-height: 1.5;
   }
@@ -27,11 +28,11 @@
 
 .img-notfound {
   width: 280px;
-  height: 240px;
+  height: 308px;
   margin: 0 auto;
   @media screen and (min-width: $tablet) {
-    width: 340px;
-    height: 294px;
+    width: 345px;
+    height: 380px;
   }
 }
 
@@ -203,60 +204,3 @@
   fill: inherit;
 }
 
-// .pagination {
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   gap: 12px;
-
-//   margin-top: 32px;
-//   margin-bottom: 60px;
-// }
-
-// // .pagination__btn-wrapper {
-// //   display: flex;
-// //   justify-content: center;
-// //   align-items: center;
-// //   width: 40px;
-// //   height: 40px;
-// // }
-
-// .pagination__button {
-//   width: 32px;
-//   height: 32px;
-//   background: inherit;
-//   border: 1px solid #fe7031;
-//   border-radius: 50%;
-//   font-family: 'Montserrat';
-//   font-style: normal;
-//   font-weight: 400;
-//   font-size: 12px;
-//   line-height: 15px;
-//   color: inherit;
-//   &:not(:last-child) {
-//     margin-right: 8px;
-//   }
-//   @media screen and (min-width: $tablet) {
-//     width: 40px;
-//     height: 40px;
-//     font-size: 16px;
-//     line-height: 20px;
-//     &:not(:last-child) {
-//       margin-right: 12px;
-//     }
-//   }
-// }
-
-// .pagination__decor {
-//   font-weight: 700;
-//   line-height: calc(20 / 16);
-//   color: $btnBgColor;
-// }
-// .pagination__button--active {
-//   background-color: $btnBgColor;
-//   color: $extraDecorColor;
-// }
-
-// .tui-page-btn {
-//   border-radius: 50%;
-// }

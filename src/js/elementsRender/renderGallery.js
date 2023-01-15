@@ -1,11 +1,4 @@
-// import './alphabet'
-
-// import { drinksData } from '../api';
-
-import sprite from '../../images/svg/icons-sprite.svg';
-
 import { elementsRef } from '../elementsRefs/references';
-import { createCocktailCardMarkup } from '../elementsMarkup/cocktailCard';
 import Pagination from 'tui-pagination';
 
 let currentPage = 1;
@@ -42,9 +35,8 @@ export function calcCardsPerPage() {
 export function createPagination(drinksData, elementRef, cardMarkup) {
   currentPage = 1;
   elementsRef.paginationEl.innerHTML = '';
-  console.log(cardsPerPage, drinksData.length);
+
   if (cardsPerPage < drinksData.length) {
-    console.log('Page: ', currentPage);
     const options = {
       totalItems: drinksData.length,
       itemsPerPage: cardsPerPage,
@@ -56,7 +48,6 @@ export function createPagination(drinksData, elementRef, cardMarkup) {
 
     pagination.on('afterMove', event => {
       currentPage = event.page;
-      console.log('Current: ', currentPage);
       renderGallery(drinksData, elementRef, cardMarkup);
     });
   }

@@ -1,5 +1,4 @@
 import * as basicLightbox from 'basiclightbox';
-import { createCommonModalMarkup } from './modalsMarkupTemplate';
 import {
   updateModalFavBtnContent,
   updateFavBtnContent,
@@ -18,12 +17,10 @@ export function createModal(
   cardId,
   localStorageKey = constants.favCocktailStorageKey
 ) {
-  const modalMarkup = createCommonModalMarkup(modalContent);
-
   let temporarySavedRemovedCard;
   let cardExists = true;
 
-  const instance = basicLightbox.create(modalMarkup, {
+  const instance = basicLightbox.create(modalContent, {
     onShow: instance => {
       const modalEl = instance.element();
       const ingredientListEl = modalEl.querySelector('.cocktail__ingredients');
@@ -36,14 +33,11 @@ export function createModal(
           e.target.dataset.name.toLowerCase()
         );
 
-        const ingredientContentModal =
+        const ingredientModalContent =
           createIngredientModalMarkup(ingredientInfo);
-        const ingredientModalMarkup = createCommonModalMarkup(
-          ingredientContentModal
-        );
 
         createIngredientModal(
-          ingredientModalMarkup,
+          ingredientModalContent,
           ingredientInfo[0].idIngredient
         );
       });
@@ -53,7 +47,6 @@ export function createModal(
         cardId,
         (localStorageKey = constants.favCocktailStorageKey)
       );
-      // btnEl.addEventListener('click', modalBtnContentHandler);
 
       if (currentPage.href.includes('favCocktail.html')) {
         btnEl.addEventListener('click', modalFavBtnContentHandler);
@@ -103,25 +96,23 @@ export function createIngredientModal(
   ingredientId,
   localStorageKey = constants.favIngredientStorageKey
 ) {
-  const modalMarkup = createCommonModalMarkup(modalContent);
   let temporarySavedRemovedCard;
   let cardExists = true;
 
-  const instance = basicLightbox.create(modalMarkup, {
+  const instance = basicLightbox.create(modalContent, {
     onShow: instance => {
       const modalEl = instance.element();
       const btnEl = modalEl.querySelector('.js-cocktail-add-btn');
-      console.log(btnEl);
+
       btnEl.innerHTML = updateModalFavBtnContent(ingredientId, localStorageKey);
 
-      // btnEl.addEventListener('click', modalBtnContentHandler);
       if (currentPage.href.includes('favIngridients.html')) {
         btnEl.addEventListener('click', modalFavIngredientHandler);
       } else {
         btnEl.addEventListener('click', modalBtnContentHandler);
       }
 
-      instance.element().querySelector('.js-modal-close-btn').onclick =
+      instance.element().querySelector('.js-ing-modal-close-btn').onclick =
         instance.close;
     },
   });

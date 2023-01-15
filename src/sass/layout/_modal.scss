@@ -13,7 +13,7 @@
   color: inherit;
   background-color: #fcfcfc;
 
-  @media screen and (min-width: $mobile) and (max-width: $to-desktop) {
+  @media screen and (min-width: $mobile) and (max-width: $to-tablet) {
     height: 70vh;
     overflow: auto;
   }

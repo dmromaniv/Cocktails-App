@@ -1,5 +1,14 @@
-export function createCocktailModalMarkup(cocktail, ingredients) {
-  return ` <p class="cocktail__title js-cocktail-title">${cocktail.strDrink}</p>
+import sprite from '../../images/svg/icons-sprite.svg';
+
+export function createCocktailModalMarkup(cocktail) {
+  return ` 
+  <div class="modal cocktail js-cocktail-modal">
+      <button class="button close-btn js-modal-close-btn" type="button">
+        <svg width="32" height="32">
+          <use href="${sprite}#close"></use>
+        </svg>
+      </button>
+       <p class="cocktail__title js-cocktail-title">${cocktail.strDrink}</p>
     <div class="cocktail__main-content">
       <div class="cocktail__desc-wrapper">
         <p class="cocktail__instruction">Instructions:</p>
@@ -21,10 +30,15 @@ export function createCocktailModalMarkup(cocktail, ingredients) {
         ${createIngredientsListMarkup(cocktail)}
         </ul>
       </div>
-    </div>`;
+    </div>
+      <button class="button cocktail__button js-cocktail-add-btn">
+        Add to favorite
+      </button>
+    </div>
+  `;
 }
 
-export function createIngredientsListMarkup(cocktail) {
+function createIngredientsListMarkup(cocktail) {
   let markup = '';
   let ingredient;
   let measure;

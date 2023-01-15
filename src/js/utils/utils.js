@@ -1,7 +1,7 @@
 const notFoundImgEl = document.querySelector('.img-notfound');
 const foundTextEl = document.querySelector('.main-heading');
 
-export function showNotFoundMsg(elFound, galleryEl, pagination) {
+export function showMsgNotFound(elFound, galleryEl, pagination) {
   if (elFound) {
     foundTextEl.textContent = 'Searching results';
     notFoundImgEl.classList.add('is-hidden');
@@ -13,7 +13,7 @@ export function showNotFoundMsg(elFound, galleryEl, pagination) {
   }
 }
 
-export function showNotFoundMessageOnFavPage(emptyStorage, elementRef) {
+export function showMsgNotAddedCocktailOnFavPage(emptyStorage, elementRef) {
   if (!emptyStorage) {
     elementRef.classList.remove('is-hidden');
   } else {
