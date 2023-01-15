@@ -1,33 +1,34 @@
-// let darkToggle = document.querySelector('#switch');
-// let modalIngr = document.querySelector('.modal-ingredient');
-// let modalW = document.querySelector('.modal');
+import { constants } from './constantsStorage/constants';
+import {
+  addToLocalStorage,
+  getFromLocalStorage,
+} from './localStorage/localStorage';
+import { elementsRef } from './elementsRefs/references';
 
-// if (sessionStorage.getItem('mode') == 'dark') {
-//   darkmode();
-// } else {
-//   lightmode();
-// }
+export function changeColorTheme() {
+  if (elementsRef.themeColorToggleEl.checked) {
+    changeThemeOnDarkMode();
+  } else {
+    changeThemeOnLightMode();
+  }
+}
 
-// darkToggle.addEventListener('change', function () {
-//   if (darkToggle.checked) {
-//     darkmode();
-//   } else {
-//     lightmode();
-//   }
-// });
+export function setDefaultTheme() {
+  if (getFromLocalStorage(constants.themeMode) == 'dark') {
+    changeThemeOnDarkMode();
+  } else {
+    changeThemeOnLightMode();
+  }
+}
 
-// function darkmode() {
-//   document.body.classList.toggle('dark');
-//   darkToggle.checked = true;
-//   sessionStorage.setItem('mode', 'dark');
-//   modalIngr.style.backgroundColor = '#202025';
-//   modalW.style.backgroundColor = '#202025';
-// }
+function changeThemeOnDarkMode() {
+  document.body.classList.add('dark');
+  elementsRef.themeColorToggleEl.checked = true;
+  addToLocalStorage(constants.themeMode, 'dark');
+}
 
-// function lightmode() {
-//   document.body.classList.remove('dark');
-//   darkToggle.checked = false;
-//   sessionStorage.setItem('mode', 'light');
-//   modalIngr.removeAttribute('style');
-//   modalW.removeAttribute('style');
-// }
+function changeThemeOnLightMode() {
+  document.body.classList.remove('dark');
+  elementsRef.themeColorToggleEl.checked = false;
+  addToLocalStorage(constants.themeMode, 'light');
+}

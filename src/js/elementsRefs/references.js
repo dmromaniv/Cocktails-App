@@ -10,4 +10,5 @@ export const elementsRef = {
   searchFormRef: document.querySelector('.header__form'),
   notFoundTextEl: document.querySelector('.header__form'),
   notFoundMsgOnFavPageEl: document.querySelector('.favorite__notfound-msg'),
+  themeColorToggleEl: document.querySelector('#switch'),
 };

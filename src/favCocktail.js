@@ -13,13 +13,18 @@ import { createModal } from './js/modals/createModal';
 import { createCocktailCardMarkup } from './js/elementsMarkup/cocktailCard';
 import { showMsgNotFound } from './js/utils/utils';
 import { getFavItemsByIds } from './js/elementsFav/getFavItems';
+import { changeColorTheme, setDefaultTheme } from './js/changeColorTheme';
 
 window.addEventListener('load', favCocktailsHandler);
 elementsRef.searchFormRef.addEventListener('submit', searchFavCocktailHandler);
 elementsRef.cocktailsListEl.addEventListener('click', cocktailCardHandler);
+elementsRef.themeColorToggleEl.addEventListener('change', () => {
+  changeColorTheme();
+});
 
 async function favCocktailsHandler() {
   // const filteredCocktailsById = await getCocktailByStorageIds();
+  setDefaultTheme();
   const filteredCocktailsById = await getFavItemsByIds(
     constants.favCocktailStorageKey,
     getCocktailsById

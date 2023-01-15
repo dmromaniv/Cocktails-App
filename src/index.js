@@ -20,10 +20,13 @@ import { createCocktailModalMarkup } from './js/modals/cocktailModalMarkup';
 import { createCocktailCardMarkup } from './js/elementsMarkup/cocktailCard';
 import { calcCardsPerPage } from './js/elementsRender/renderGallery';
 import { showMsgNotFound } from './js/utils/utils';
+import { changeColorTheme, setDefaultTheme } from './js/changeColorTheme';
 
 elementsRef.alphabetListEl.addEventListener('click', alphabetSearchHandler);
 elementsRef.cocktailsListEl.addEventListener('click', cocktailCardHandler);
 elementsRef.searchFormRef.addEventListener('submit', searchFormHandler);
+elementsRef.themeColorToggleEl.addEventListener('change', themeColorHandler);
+addEventListener('load', setDefaultTheme());
 
 initAlphabetSearch();
 generateRandomCocktails();
@@ -219,6 +222,11 @@ async function cocktailCardHandler(e) {
       constants.favCocktailStorageKey
     );
   }
+}
+
+function themeColorHandler() {
+  console.log('test');
+  changeColorTheme();
 }
 
 //====Utils for alphabet search====
