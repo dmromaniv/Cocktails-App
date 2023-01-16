@@ -86,14 +86,14 @@
 
   font-weight: 600;
   line-height: calc(26 / 16);
-  color: inherit;
+  color: var(--bg-heading);
   text-transform: uppercase;
 
   @media screen and (min-width: $tablet) {
     margin-bottom: 24px;
   }
   @media screen and (min-width: $desktop) {
-    color: $textColorDark;
+    color: var(--bg-heading);
   }
 }
 
@@ -164,7 +164,7 @@
 .cocktail__ingredients {
   height: 130px;
   overflow: auto;
-  padding-left: 10px;
+  padding-left: 13px;
   line-height: calc(26 / 16);
 }
 
@@ -192,9 +192,9 @@
 
 .cocktail__ingredients > li::marker {
   content: '✶';
-  color: inherit;
+  color: var(--bg-heading);
 }
 
-.cocktail__ingredients a:hover {
+.cocktail__ingredients li:hover {
   color: #fd5103;
 }

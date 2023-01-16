@@ -272,11 +272,11 @@ input:checked ~ .header__toggle:after {
 }
 
 .header__toggle-light {
-  color: #fd5103;
+  color: var(--switcher-light-color);
 }
 
 .header__toggle-dark {
-  color: #5f6775;
+  color: var(--switcher-dark-color);
 }
 
 // ----------------burger menu------------------

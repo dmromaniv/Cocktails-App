@@ -1,11 +1,15 @@
 :root {
   --bg-color: #fcfcfc;
   --heading-color: #202025;
+  --switcher-light-color: #fd5103;
+  --switcher-dark-color: #5f6775;
 }
 
 [data-theme='dark'] {
   --bg-color: #202025;
   --heading-color: #fcfcfc;
+  --switcher-light-color: #fcfcfc;
+  --switcher-dark-color: #fd5103;
 }
 
 body {

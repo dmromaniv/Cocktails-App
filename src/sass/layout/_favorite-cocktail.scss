@@ -52,7 +52,7 @@
 //for ingredient
 
 .favorite__list-ingredient {
-  margin-bottom: 20px;
+  // margin-bottom: 20px;
 
   @media screen and (min-width: 768px) {
     display: flex;
@@ -81,6 +81,14 @@
   }
 }
 
+.favorite__item {
+  @media screen and (max-width: 767px) {
+    &:not(:last-child) {
+      margin-bottom: 20px;
+    }
+  }
+}
+
 .ingredient-card__title {
   font-weight: 900;
   font-size: 26px;
@@ -90,13 +98,12 @@
   @media screen and (min-width: 768px) {
     font-size: 28px;
     line-height: 1.18;
-    color: #000000;
+    color: var(--bg-heading);
     margin-bottom: 28px;
   }
 
   @media screen and (min-width: 1280px) {
     font-size: 32px;
-    color: #202025;
   }
 }
 
@@ -106,12 +113,12 @@
   font-size: 14px;
   line-height: 1.5;
   text-transform: uppercase;
-  color: #000000;
+  color: var(--bg-heading);
   margin-bottom: 20px;
 
   @media screen and (min-width: 768px) {
     font-size: 16px;
-    color: #5f6775;
+
     margin-bottom: 28px;
   }
 }
