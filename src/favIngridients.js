@@ -14,7 +14,7 @@ import { createIngredientModal } from './js/modals/createModal';
 import { showMsgNotFound } from './js/utils/utils';
 import { getFavItemsByIds } from './js/elementsFav/getFavItems';
 import { setDefaultTheme } from './js/changeColorTheme';
-import { changeColorTheme, setDefaultTheme } from './js/changeColorTheme';
+import { changeColorTheme} from './js/changeColorTheme';
 
 window.addEventListener('load', favIngredientHandler);
 elementsRef.ingredientsListEl.addEventListener('click', ingredientCardHandler);
@@ -23,12 +23,12 @@ elementsRef.searchFormRef.addEventListener(
   searchFavIngredientHandler
 );
 elementsRef.themeColorToggleEl.addEventListener('change', () => {
-  changeColorTheme();
+
 });
 
 async function favIngredientHandler() {
   // const filteredIngredientsById = await getIngredientsByStorageIds();
-  setDefaultTheme();
+
   const filteredIngredientsById = await getFavItemsByIds(
     constants.favIngredientStorageKey,
     getIngredientById
