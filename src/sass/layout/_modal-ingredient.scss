@@ -81,7 +81,7 @@
 
 .ingredient__name-accent {
   font-weight: 600;
-  color: $textColorDark;
+  color: var(--heading-color);
 }
 
 .ingredient__desc {
