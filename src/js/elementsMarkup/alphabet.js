@@ -13,7 +13,7 @@ export function createDesktopAlphabetMarkup() {
 export function createMobileAlphabetMarkup() {
   return [...alphabet]
     .map(letter => {
-      return `<li class="hero__select-option" data-value="${letter.toLowerCase()}">${letter.toLowerCase()}</li>`;
+      return `<li class="hero__select-option" data-value="${letter.toLowerCase()}">${letter.toUpperCase()}</li>`;
     })
     .join('');
 }

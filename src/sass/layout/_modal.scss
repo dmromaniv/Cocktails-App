@@ -179,9 +179,14 @@
   color: $extraDecorColor;
   background-color: $btnAccentBgColor;
   border-radius: 4px;
+  transition: background-color linear 850ms;
 
   @media screen and (min-width: $tablet) {
     margin-left: auto;
+  }
+
+  &:hover {
+    background-color: $btnBgColor;
   }
 }
 

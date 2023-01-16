@@ -175,12 +175,13 @@ async function searchCocktails(searchQuery, getCocktail) {
 
     // Render cocktails gallery when the request is successful
     if (foundCocktail) {
-      renderGallery(
+      createPagination(
         foundCocktail,
         elementsRef.cocktailsListEl,
         createCocktailCardMarkup
       );
-      createPagination(
+
+      renderGallery(
         foundCocktail,
         elementsRef.cocktailsListEl,
         createCocktailCardMarkup

@@ -125,12 +125,13 @@ async function cocktailCardHandler(e) {
 
 function displayGallery(filteredCocktail) {
   if (filteredCocktail !== 0) {
-    renderGallery(
+    createPagination(
       filteredCocktail,
       elementsRef.cocktailsListEl,
       createCocktailCardMarkup
     );
-    createPagination(
+
+    renderGallery(
       filteredCocktail,
       elementsRef.cocktailsListEl,
       createCocktailCardMarkup

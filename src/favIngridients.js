@@ -121,14 +121,14 @@ async function searchFavIngredientHandler(e) {
 }
 
 function displayIngredientsGallery(filteredIngredient) {
-  console.log(filteredIngredient);
   if (filteredIngredient !== 0) {
-    renderGallery(
+    createPagination(
       filteredIngredient,
       elementsRef.ingredientsListEl,
       createIngredientCardMarkup
     );
-    createPagination(
+
+    renderGallery(
       filteredIngredient,
       elementsRef.ingredientsListEl,
       createIngredientCardMarkup

@@ -36,6 +36,8 @@ export function createPagination(drinksData, elementRef, cardMarkup) {
   currentPage = 1;
   elementsRef.paginationEl.innerHTML = '';
 
+  console.log('Page', currentPage);
+
   if (cardsPerPage < drinksData.length) {
     const options = {
       totalItems: drinksData.length,
@@ -44,10 +46,13 @@ export function createPagination(drinksData, elementRef, cardMarkup) {
       page: 1,
       centerAlign: false,
     };
+
     const pagination = new Pagination(elementsRef.paginationEl, options);
 
     pagination.on('afterMove', event => {
       currentPage = event.page;
+
+      console.log('curPage', currentPage);
       renderGallery(drinksData, elementRef, cardMarkup);
     });
   }
