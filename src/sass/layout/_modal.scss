@@ -11,7 +11,7 @@
 
   font-size: 16px;
   color: inherit;
-  background-color: #fcfcfc;
+  background-color: var(--bg-color);
 
   @media screen and (min-width: $mobile) and (max-width: $to-tablet) {
     height: 70vh;

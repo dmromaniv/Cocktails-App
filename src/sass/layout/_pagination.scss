@@ -26,7 +26,7 @@
   line-height: calc(15 / 12);
 
   border: 1px solid $btnBgColor;
-  color: #1e1e1e;
+  color: var(--heading-color);
   border-radius: 50%;
 
   @media screen and (min-width: $tablet) {
